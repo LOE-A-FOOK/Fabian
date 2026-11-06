@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>La Carte au Trésor de Guyane</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== Page principale ===== -->
+    <main>
+      <h1>🏴‍☠️ La Carte au Trésor de Guyane</h1>
+      <p class="sub">
+        Visite les 5 lieux, résous 3 énigmes dans chacun et rassemble les indices pour
+        trouver le trésor !
+      </p>
+      <div class="bar" id="bar"></div>
+      <!-- Carte illustrée (SVG) -->
+      <div class="mapwrap">
+        <svg viewBox="0 0 600 330" role="img" aria-label="Carte illustrée de la Guyane">
+          <g id="waves">
+            <path class="wave" d="M20 20q15-8 30 0t30 0" />
+            <path class="wave" d="M200 14q15-8 30 0t30 0" />
+            <path class="wave" d="M330 34q15-8 30 0t30 0" />
+            <path class="wave" d="M470 20q15-8 30 0t30 0" />
+            <path class="wave" d="M60 70q15-8 30 0t30 0" />
+            <path class="wave" d="M250 50q15-8 30 0t30 0" />
+            <path class="wave" d="M500 70q15-8 30 0t30 0" />
+            <path class="wave" d="M440 40q15-8 30 0t30 0" />
+          </g>
+          <path id="sea" d="M0 0" fill="none" />
+          <path
+            class="land"
+            d="M0 30L110 48L200 60L300 75L390 88L450 112L500 150L560 190L600 215L600 330L0 330Z"
+          />
+          <g id="trees"></g>
+          <path id="boatpath" d="M-20 100 Q150 20 300 40 T620 60" fill="none" />
+          <g>
+            <text font-size="26" text-anchor="middle">⛵</text>
+            <animateMotion dur="22s" repeatCount="indefinite" rotate="0">
+              <mpath href="#boatpath" />
+            </animateMotion>
+          </g>
+          <path id="route" d="" />
+          <g id="pins"></g>
+          <g id="x" tabindex="0" role="button" aria-label="Le trésor !">
+            <text x="280" y="262" font-size="34" text-anchor="middle">❌</text>
+            <text x="280" y="286" font-size="14" text-anchor="middle" fill="currentColor">
+              Saül
+            </text>
+          </g>
+          <g class="compass">
+            <text x="540" y="292" font-size="40" text-anchor="middle">🧭</text>
+          </g>
+        </svg>
+      </div>
+      <!-- Énigmes et message secret -->
+      <div class="panel" id="panel">
+        <h2>Clique sur un lieu 📍</h2>
+        <p>
+          Chaque lieu cache 3 énigmes sur la Guyane. 3 bonnes réponses = un morceau du
+          message secret.
+        </p>
+      </div>
+      <div class="scroll" id="scroll">📜 Message secret : …</div>
+    </main>
+    <!-- Écran de victoire -->
+    <div id="win">
+      <div class="box">
+        <h2>🏆 Trésor trouvé !</h2>
+        <p>
+          Bravo, explorateur ! Tu as percé les secrets de la Guyane : coffre rempli d’or,
+          de cacao et de rêves d’aventure.
+        </p>
+        <button id="again">Rejouer</button>
+      </div>
+    </div>
+    <div id="alerte" style="background:#c0392b;color:#fff;padding:12px;text-align:center;font-family:sans-serif">
+      
+      <div id="detail"></div>
+    </div>
+    <script>
+      window.addEventListener("error", function (e) {
+        document.getElementById("detail").textContent = "Détail : " + e.message;
+      });
+    </script>
+    <script src="java.js"></script>
+  </body>
+</html>
